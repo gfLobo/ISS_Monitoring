@@ -1,4 +1,21 @@
-# ISS Monitoring
+<p align="center">
+<img src="./images/iss_badge.png" width="13.5%">
+
+
+
+
+
+
+<a align="center">
+  <h1 style="font-family: Garamond, serif;"> ISS Monitoring </h1>
+</a>
+<p align="center">
+<img src="https://img.shields.io/github/repo-size/gfLobo/ISS_Monitoring?color=red&label=Size">
+<img src="https://img.shields.io/github/license/gfLobo/ISS_Monitoring?style=plastic&logo=appveyor">
+</p>
+
+<br/><br/>
+
 
 <img src="./images/Map-Presentation.gif" alt="exemplo imagem">
 
@@ -17,7 +34,7 @@ Before we start, please verify if you have:
 <br/>
 <br/>
 
-## ⚙ Installing dependencies
+## ⚙ Dependencies
 
 ````
 os
@@ -40,15 +57,27 @@ matplotlib
 <br/>
 <br/>
 <br/>
+<br/>
+<br/>
 
 ## 🚀 Getting started
 
-### Customization
+1. Run <a href="https://github.com/gfLobo/ISS_Monitoring/blob/main/ISS_Coordinate_Files.py">``ISS_Coordinate_Files.py``</a> for refresh the data.
+2. Run the Browser <a href="https://github.com/gfLobo/ISS_Monitoring/blob/main/ISS_Live_Browser.py">``ISS_Live_Browser.py``</a>
+
+> You can also open the file <a href="https://github.com/gfLobo/ISS_Monitoring/blob/main/mp.html">` mp.html `</a> locally, on your own browser.
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## Customization
 Here are simple customizations for your viewer.
 
-<br/><br/>
 
-
+<br/>
 <div style="text-align:center">
   <h2>🎨 Map Themes</h2>
 </div>
@@ -84,7 +113,7 @@ alt="Earth Relief - 'stamenterrain'"></a>
 
 * You can also change the default zoom rate but, remember to fix the position (or the size) of the ISS image on the maker.
 
-> Check this feature on the line 74.
+> Check this feature on the line 89.
 
 
 
@@ -105,7 +134,7 @@ pip install pyinstaller
 
 <p align="center">
     <a href="https://www.youtube.com/watch?v=QWqxRchawZY">
-    <img src="https://i.ytimg.com/an_webp/QWqxRchawZY/mqdefault_6s.webp?du=3000&sqp=CMDdkZQG&rs=AOn4CLDZxcAARgZqiFU5rlAz0WhsycO8Cw" 
+    <img src="https://i.ytimg.com/an_webp/QWqxRchawZY/mqdefault_6s.webp?du=3000&sqp=CMSwk5QG&rs=AOn4CLB1VJ_mdPCWezbcs2ZPCPc5XGVg6A" 
     width="60%" ></a>
 </p>
 <p align="center">
@@ -124,7 +153,7 @@ pip install pyinstaller
 ## 📫 Contribute
 
 1. Fork this repo.
-2. Create a branch: `git checkout -b <branch_name>`.
+2. Create a branch: `git checkout -b <branch_name>`
 3. Make your code and: `git commit -m '<commit_message>'`
 4. Send to the original branch: `git push origin ISS_Monitoring / main`
 5. Make a pull request.

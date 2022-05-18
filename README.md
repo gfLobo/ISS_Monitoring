@@ -4,14 +4,14 @@
 
 
 
-
-
-<a align="center">
-  <h1 style="font-family: Garamond, serif;"> ISS Monitoring </h1>
-</a>
+<h1 align="center" style="font-family: Garamond, serif;">
+ISS Monitoring
+</h1>
+  
+  
 <p align="center">
 <img src="https://img.shields.io/github/repo-size/gfLobo/ISS_Monitoring?color=red&label=Size">
-<img src="https://img.shields.io/github/license/gfLobo/ISS_Monitoring?style=plastic&logo=appveyor">
+<a href="https://github.com/gfLobo/ISS_Monitoring/blob/main/LICENSE"><img src="https://img.shields.io/github/license/gfLobo/ISS_Monitoring?style=plastic&logo=appveyor"></a>
 </p>
 
 <br/><br/>

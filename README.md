@@ -4,7 +4,7 @@
 
 
 
-<h1 align="center" style="font-family: Garamond, serif;">
+<h1 align="center" >
 ISS Monitoring
 </h1>
   

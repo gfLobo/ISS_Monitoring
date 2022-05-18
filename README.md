@@ -68,15 +68,13 @@ alt="Vintage - 'stamenwatercolor'"><img src="./images/Demo-Street.png"  style="w
 alt="Street Map - 'openstreetmap'">
 
 <p align="center">
-Earth Relief - 'stamenterrain'
+  Earth Relief - 'stamenterrain'
 </p>
-<a align="center">
 
-  <img src="./images/Demo-Relief.png"  style="width:50%" onclick="myFunction(this);"
-  alt="Earth Relief - 'stamenterrain'">
-
-</a>
-
+<p align="center">
+<a><img src="./images/Demo-Relief.png"  style="width:50%" onclick="myFunction(this);"
+alt="Earth Relief - 'stamenterrain'"></a>
+</p>
 
 
 

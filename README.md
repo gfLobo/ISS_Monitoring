@@ -78,9 +78,7 @@ Here are simple customizations for your viewer.
 
 
 <br/>
-<div style="text-align:center">
-  <h2>🎨 Map Themes</h2>
-</div>
+<h2 align="center">🎨 Map Themes</h2>
 
 <!-- The four columns -->
 <p align="center">

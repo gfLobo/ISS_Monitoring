@@ -132,7 +132,7 @@ pip install pyinstaller
 
 <p align="center">
     <a href="https://www.youtube.com/watch?v=QWqxRchawZY">
-    <img src="https://i.ytimg.com/an_webp/QWqxRchawZY/mqdefault_6s.webp?du=3000&sqp=CMSwk5QG&rs=AOn4CLB1VJ_mdPCWezbcs2ZPCPc5XGVg6A" 
+    <img src="./images/thumb.webp" 
     width="60%" ></a>
 </p>
 <p align="center">

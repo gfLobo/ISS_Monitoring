@@ -109,9 +109,7 @@ alt="Earth Relief - 'stamenterrain'"></a>
 </div>
 
 
-* You can also change the default zoom rate but, remember to fix the position (or the size) of the ISS image on the maker.
-
-> Check this feature on the line 89.
+> You can also change the default zoom rate but, remember to fix the position (or the size) of the ISS image on the maker. Check this feature on the line 89 on the `ISS_Coordinate_Files.py`.
 
 
 

@@ -10,13 +10,15 @@ from io import BytesIO
 import numpy as np
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
-
+import time
 
 
 
 zoom_rate = 5
-main_theme = 'openstreetmap'
+main_theme = 'stamenterrain'
 while True:
+
+
 
     # Requests
     data = pd.read_json('http://api.open-notify.org/iss-now.json')
@@ -26,10 +28,6 @@ while True:
         data['iss_position']['latitude'],
         data['iss_position']['longitude']
     ]
-
-
-
-
 
 
 
@@ -50,14 +48,6 @@ while True:
     except:
         address = f'Lat: {loc[0]}, Lon: {loc[1]}'
 
-
-
-
-
-
-
-
-
     # The Map
     m = folium.Map(
         location=loc,
@@ -71,11 +61,6 @@ while True:
     folium.TileLayer('cartodbpositron', name='White Earth').add_to(m)
     folium.TileLayer('cartodbdark_matter', name='Dark Earth').add_to(m)
     folium.LayerControl().add_to(m)
-
-
-
-
-
 
     # ISS on the map
     folium.CircleMarker(location=(loc[0] - 0.5, loc[1] + 0.8),
@@ -93,11 +78,6 @@ while True:
             html=f'<img src="images/iss.png" width="50"></img>',
         )
     ).add_to(m)
-
-
-
-
-
 
     # Header
     folium.map.Marker(
@@ -119,9 +99,6 @@ while True:
         )
     ).add_to(m)
 
-
-
-
     # Astronauts Info
     folium.map.Marker(
         location=loc,
@@ -132,23 +109,16 @@ while True:
         )
     ).add_to(m)
 
-
-
-
-
-
-
-
     # Globe Figure
     flatMap = plt.figure()
     globe = Basemap(projection='mill')
 
-    globe.etopo()
+
     globe.drawparallels(np.arange(-90, 90, 30), labels=[1, 0, 0, 0])
     globe.drawmeridians(np.arange(globe.lonmin, globe.lonmax + 30, 60), labels=[0, 0, 0, 1])
-
-
-
+    # fill continents 'coral' (with zorder=0), color wet areas 'aqua'
+    globe.drawmapboundary(fill_color='#003399')
+    globe.fillcontinents(color='#00cc00', lake_color='#003399')
     ''' shade the night areas, with alpha transparency so the
         map shows through. Use current time in UTC.'''
 
@@ -159,14 +129,8 @@ while True:
     plt.xticks(fontsize=30)
     plt.yticks(fontsize=30)
 
-
-
-
     '''ISS location on the globe'''
     globe.scatter(loc[1], loc[0], latlon=True, c='r', s=100)
-
-
-
 
     '''Handling the globe as a temporary PNG file and writing to an HTML file'''
     tmpfile = BytesIO()
@@ -178,43 +142,26 @@ while True:
     with open('globe.html', 'w') as f:
         f.write(html)
 
-
-
-
-
-
-
     '''GloboSphere plot'''
     globoSphereMap = plt.figure(figsize=(9, 6))
-
-
 
     # set perspective angle
     lat_viewing_angle = loc[0]
     lon_viewing_angle = loc[1]
 
-
-
     # define color maps for water and land
     ocean_map = (plt.get_cmap('ocean'))(210)
     cmap = plt.get_cmap('gist_earth')
 
-
-
     # call the basemap and use orthographic projection at viewing angle
     globoSphereBasemap = Basemap(projection='ortho',
                                  lat_0=lat_viewing_angle, lon_0=lon_viewing_angle)
-
-
-
 
     # coastlines, map boundary, fill continents/water, fill ocean, draw countries
     globoSphereBasemap.drawcoastlines()
     globoSphereBasemap.drawmapboundary(fill_color=ocean_map)
     globoSphereBasemap.fillcontinents(color=cmap(200), lake_color=ocean_map)
     globoSphereBasemap.drawcountries()
-
-
 
     # latitude/longitude line vectors
     lat_line_range = [-90, 90]
@@ -262,16 +209,8 @@ while True:
         )
     ).add_to(m)
 
-
-
-
-
-
     '''Saving the map file'''
     m.save('mp.html')
-
-
-
 
     '''The auto-refresh functionality'''
     with open("mp.html", "r") as in_file:
@@ -283,6 +222,8 @@ while True:
                 line = line + '''        <script type="text/javascript" src="https://livejs.com/live.js"></script>\n'''
             out_file.write(line)
 
+    """Sleep a little. A performance strategy and also to keep the view pleasant."""
+    time.sleep(30)
 
 
 

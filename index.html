@@ -3,8 +3,8 @@
     <head>    
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
             <script type="text/javascript" src="https://livejs.com/live.js"></script>
-        
-            <script src="script.js" type="text/javascript">
+            
+            <script>
                 L_NO_TOUCH = false;
                 L_DISABLE_3D = false;
             </script>
@@ -43,12 +43,12 @@
 </html>
 
 
-<script src="script.js" type="text/javascript">
-    var url = "http://api.open-notify.org/iss-now.json";//Sua URL
+<script>
+    var url = "http://api.open-notify.org/iss-now.json";
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", url, false);
-    xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send()
     var json = xhttp.responseText;
     var obj = JSON.parse(json);
 
@@ -56,11 +56,11 @@
 
 
 
-    var url2 = "http://api.open-notify.org/astros.json";//Sua URL
+    var url2 = "http://api.open-notify.org/astros.json";
 
     var xhttp2 = new XMLHttpRequest();
     xhttp2.open("GET", url2, false);
-    xhttp2.send();//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp2.send();
     var json2 = xhttp2.responseText;
     var obj2 = JSON.parse(json2);
 
@@ -92,7 +92,7 @@
     }
     setTimeout(moveISS, 30000);
 </script>
-<script src="script.js" type="text/javascript">    
+<script>    
 
             
             var map_0a2e55eb4a4f508224ed5202c035f799 = L.map(

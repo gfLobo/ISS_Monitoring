@@ -1,17 +1,14 @@
 # Frame Util
 Use this on your website to create a window with the ISS view.
 
-> Reference link: linkFrame
+> Reference link: https://iss-monitoring.vercel.app
 
 </br>
 </br>
 </br>
 
-Paste the iframe and resize with a div element!
+Copy the iframe, resize and paste on your website. Check also the line 68 on [`index.html`](index.html).
 
-    <iframe
-    src="frame.html#zoom=80"
-    width="1400" height="700vh">
-    </iframe>
+    <iframe style="width:200%; height:130vh;" id="fmap_canvas" src="https://iss-monitoring.vercel.app" ></iframe>
 
-<iframe width="600" height="500" id="gmap_canvas" src="frame.html" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+<iframe style="width:200%; height:130vh;" id="fmap_canvas" src="https://iss-monitoring.vercel.app" ></iframe>

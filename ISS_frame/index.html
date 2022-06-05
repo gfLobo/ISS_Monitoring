@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <head>    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
-    
+    <link rel="icon" type="image/x-icon" href="./images/iss.png"/>
+    <title>ISS Monitoring</title>
+
+
         <script>
             L_NO_TOUCH = false;
             L_DISABLE_3D = false;
@@ -31,6 +34,16 @@
                     height: 100.0%;
                     left: 0.0%;
                     top: 0.0%;
+                }
+                h1{
+                    font-size:3vw;
+                }
+                h5{
+                    font-size:1vw
+                }
+                h4{
+                    font-size:1.5vw
+
                 }
             </style>
         
@@ -62,7 +75,10 @@
     console.log(astronauts);
 
 
-
+    /* Resized map with: 
+    *
+    *document.body.style.zoom = "100%";
+    */
 
 
 
@@ -175,7 +191,7 @@
             ).addTo(map_0a2e55eb4a4f508224ed5202c035f799);
         
     
-            var div_icon_ec1fc0c0a8e8a424dd4c87e3d2e94503 = L.divIcon({"className": "empty", "html": `\u003ch1 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003eInternational Space Station\u003c/mark\u003e\u003c/h1\u003e\n            \u003cbr/\u003e\n            \u003ch4  \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\ud83d\udccd Latitude: ${lat}, Longitude: ${lon}\u003c/mark\u003e\u003c/h4\u003e`, "iconAnchor": [225, 300], "iconSize": [500, 90]});
+            var div_icon_ec1fc0c0a8e8a424dd4c87e3d2e94503 = L.divIcon({"className": "empty", "html": `\u003ch1 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003eInternational Space Station\u003c/mark\u003e\u003c/h1\u003e\n            \u003cbr/\u003e\n            \u003ch4 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\ud83d\udccd Latitude: ${lat.toString().substr(0, 10)}, Longitude: ${lon.toString().substr(0, 10)}\u003c/mark\u003e\u003c/h4\u003e`, "iconAnchor": [225, 300], "iconSize": [500, 90]});
             marker_cbaa8f6bcd875ff0a46e3eb12f9a6617.setIcon(div_icon_ec1fc0c0a8e8a424dd4c87e3d2e94503);
         
     

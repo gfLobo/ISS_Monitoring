@@ -42,7 +42,7 @@
         
 </body>
 <script>
-    var url = "http://api.open-notify.org/iss-now.json";
+    var url = "https://api.wheretheiss.at/v1/satellites/25544"
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", url, false);
@@ -54,22 +54,11 @@
 
 
 
-    var url2 = "http://api.open-notify.org/astros.json";
-
-    var xhttp2 = new XMLHttpRequest();
-    xhttp2.open("GET", url2, false);
-    xhttp2.send();
-    var json2 = xhttp2.responseText;
-    var obj2 = JSON.parse(json2);
 
 
-    var people = obj2.people
-    
 
-    const astronauts = []
-    for (let i = 0; i < people.length; i++) {
-        astronauts.push(people[i].name);
-    }
+    const astronauts = ["Oleg Artemyev", "Denis Matveev", "Sergey Korsakov", "Kjell Lindgren", "Bob Hines", "Samantha Cristoforetti", "Jessica Watkins"]
+
 
     console.log(astronauts);
 
@@ -78,12 +67,10 @@
 
 
 
-    var loc = obj.iss_position
 
+    var lat = obj.latitude
+    var lon = obj.longitude
 
-    var lat = loc.latitude
-    var lon = loc.longitude
-    
 
     function moveISS(){
         window.location.reload();

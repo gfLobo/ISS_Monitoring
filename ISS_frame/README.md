@@ -9,6 +9,6 @@ Use this on your website to create a window with the ISS view.
 
 Copy the iframe, resize and paste on your website. Check also the line 68 on [`index.html`](index.html).
 
-    <iframe style="width:200%; height:130vh;" id="fmap_canvas" src="https://iss-monitoring.vercel.app" ></iframe>
+    <iframe style="width:200%; height:130vh;"  src="https://iss-monitoring.vercel.app" ></iframe>
 
-<iframe style="width:200%; height:130vh;" id="fmap_canvas" src="https://iss-monitoring.vercel.app" ></iframe>
+<iframe style="width:200%; height:130vh;" src="https://iss-monitoring.vercel.app" ></iframe>

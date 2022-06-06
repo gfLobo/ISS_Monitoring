@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
     <link rel="icon" type="image/x-icon" href="./images/iss.png"/>
     <title>ISS Monitoring</title>
@@ -35,16 +35,7 @@
                     left: 0.0%;
                     top: 0.0%;
                 }
-                h1{
-                    font-size:2.7vw;
-                }
-                h5{
-                    font-size:1vw
-                }
-                h4{
-                    font-size:1.5vw
-
-                }
+               
             </style>
         
 </head>
@@ -63,7 +54,7 @@
     var obj = JSON.parse(json);
 
 
-
+    
 
 
    
@@ -72,7 +63,6 @@
     const astronauts = ["Oleg Artemyev", "Denis Matveev", "Sergey Korsakov", "Kjell Lindgren", "Bob Hines", "Samantha Cristoforetti", "Jessica Watkins"]
     
 
-    console.log(astronauts);
 
 
     /* Resized map with: 
@@ -85,7 +75,59 @@
 
     var lat = obj.latitude
     var lon = obj.longitude
+
+    var velocity = obj.velocity
+    var altitude = obj.altitude
+
     
+
+    var urlCurrentLoc = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=eng`
+
+    var xhttpLoc = new XMLHttpRequest();
+    xhttpLoc.open("GET", urlCurrentLoc, false);
+    xhttpLoc.send();
+    var jsonLoc = xhttpLoc.responseText;
+    var objLoc = JSON.parse(jsonLoc);
+
+
+    console.log(objLoc)
+    var city = "";
+
+    if (!objLoc.countryName && !objLoc.city) {
+        city = objLoc.locality
+    }else if(objLoc.city == ""){
+        city = `${objLoc.locality} - ${objLoc.countryCode}`
+    }else{
+        city = `${objLoc.city} - ${objLoc.countryName}`
+    }
+
+
+
+    
+
+
+
+
+    var urlTimezone = `https://api.wheretheiss.at/v1/coordinates/${lat},${lon}`
+
+    var xhttpTimezone = new XMLHttpRequest();
+    xhttpTimezone.open("GET", urlTimezone, false);
+    xhttpTimezone.send();
+    var jsonTimezone = xhttpTimezone.responseText;
+    var objTimezone = JSON.parse(jsonTimezone);
+
+    var timeZone = objTimezone.timezone_id;
+
+    date = new Date()
+    var dataNTime = date.toLocaleString('eng-US', {year:'numeric', month:'2-digit', day:'2-digit', hour: 'numeric',   hour12: true, timeZone: `${timeZone}`, minute:'numeric', second:'numeric'})
+    
+    var light = "";
+
+    if (dataNTime.at(-2)=="A") {
+        light = "☀"
+    } else {
+        light = "🌙"
+    }
 
     function moveISS(){
         window.location.reload();
@@ -191,9 +233,26 @@
             ).addTo(map_0a2e55eb4a4f508224ed5202c035f799);
         
     
-            var div_icon_ec1fc0c0a8e8a424dd4c87e3d2e94503 = L.divIcon({"className": "empty", "html": `\u003ch1 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003eInternational Space Station\u003c/mark\u003e\u003c/h1\u003e\n            \u003cbr/\u003e\n            \u003ch4 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\ud83d\udccd Latitude: ${lat.toString().substr(0, 10)}, Longitude: ${lon.toString().substr(0, 10)}\u003c/mark\u003e\u003c/h4\u003e`, "iconAnchor": [225, 300], "iconSize": [500, 90]});
+            var div_icon_ec1fc0c0a8e8a424dd4c87e3d2e94503 = L.divIcon({"className": "empty", "html": `\u003ch1 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003eInternational Space Station \u003c/mark\u003e\u003c/h1\u003e\n            \u003cbr/\u003e\n            \u003ch4 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\ud83d\udccd ${city} \u003c/mark\u003e\u003c/h4\u003e`, "iconAnchor": [225, 300], "iconSize": [500, 90]});
             marker_cbaa8f6bcd875ff0a46e3eb12f9a6617.setIcon(div_icon_ec1fc0c0a8e8a424dd4c87e3d2e94503);
         
+
+
+
+
+            var marker_timeZone = L.marker(
+                [lat, lon],
+                {}
+            ).addTo(map_0a2e55eb4a4f508224ed5202c035f799);
+        
+    
+            var div_icon_timeZone = L.divIcon({"className": "empty", "html": `\u003ch4 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e ${timeZone}</br>       ${dataNTime} ${light} \u003c/mark\u003e\u003c/h4\u003e`, "iconAnchor": [-300, 280], "iconSize": [500, 90]});
+            marker_timeZone.setIcon(div_icon_timeZone);
+        
+
+
+
+
     
             var marker_c147a92c2300c0a403fff4c39e660651 = L.marker(
                 [lat, lon],
@@ -201,7 +260,7 @@
             ).addTo(map_0a2e55eb4a4f508224ed5202c035f799);
         
     
-            var div_icon_783da8baee4165bd907a468b24ef4966 = L.divIcon({"className": "empty", "html": "\u003cimg src=\"images/iss_badge.png\" width=\"80\"\u003e\u003c/img\u003e", "iconAnchor": [300, 295]});
+            var div_icon_783da8baee4165bd907a468b24ef4966 = L.divIcon({"className": "empty", "html": "\u003cimg src=\"images/iss_badge.png\" width=\"105\"\u003e\u003c/img\u003e", "iconAnchor": [330, 300]});
             marker_c147a92c2300c0a403fff4c39e660651.setIcon(div_icon_783da8baee4165bd907a468b24ef4966);
         
     
@@ -210,21 +269,35 @@
                 {}
             ).addTo(map_0a2e55eb4a4f508224ed5202c035f799);
         
-            for(let i =0; i<astronauts.length;i++){
-                
-            }
+            
             var div_icon_fefc314cb89f904be38dc13001a50d16 = L.divIcon({"className": "empty", 
-            "html": `\u003ch4 \u003e\ud83d\udc69\u200d\ud83d\ude80 \u003cmark style=\"background-color:black; color:white;\"\u003e${astronauts.length} Astronauts on board:\u003c/mark\u003e\u003c/h4\u003e\u003cbr/ <ol>   ${astronauts.map((res)=>{return `   \u003ch5 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e          ${res}  \u003c/mark /h5\u003e        `})}`, "iconAnchor": [400, -40], "iconSize": [500, 500]});
+            "html": `\u003ch3 \u003e\ud83d\udc69\u200d\ud83d\ude80 \u003cmark style=\"background-color:black; color:white;\"\u003e${astronauts.length} Astronauts on board:\u003c/mark\u003e\u003c/h3\u003e\u003cbr/ <ol>   ${astronauts.map((res)=>{return `   \u003ch5 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e   ${res}  \u003c/mark /h5\u003e    `})}`, "iconAnchor": [600, -60], "iconSize": [500, 500]});
             marker_f5a29126883031cfcccc27eeb3856df5.setIcon(div_icon_fefc314cb89f904be38dc13001a50d16);
         
     
+
+            var marker_hub = L.marker(
+                [lat, lon],
+                {}
+            ).addTo(map_0a2e55eb4a4f508224ed5202c035f799);
+        
+            let pannel = `<h4><mark style="background-color:black; color:white;">Latitude:--${lat.toString().substr(0, 10)}@Longitude:--${lon.toString().substr(0, 10)}</br></br>⚡Velocity:--${velocity.toString().substr(0, 5)}Km/h@✨Altitude:--${altitude.toString().substr(0, 8)}Km</mark></h4>`.replace("@","⠀⠀⠀").replace("--","⠀").replace("--","⠀").replace("@","⠀⠀⠀").replace("--","⠀").replace("--","⠀")
+            
+            var div_icon_hub = L.divIcon({"className": "empty", "html": `${pannel}`, "iconAnchor": [300, -230]});
+            marker_hub.setIcon(div_icon_hub);
+        
+
+
+            
+
+
             var marker_ac37d7641156687c25d90c5324d84946 = L.marker(
                 [lat, lon],
                 {}
             ).addTo(map_0a2e55eb4a4f508224ed5202c035f799);
         
     
-            var div_icon_a2b03ab2ceb0625ae660879e241c8be3 = L.divIcon({"className": "empty", "html": "\u003ciframe src=\"globe.html\" height=300 width=500\u003e\u003c/iframe\u003e", "iconAnchor": [-150, -50]});
+            var div_icon_a2b03ab2ceb0625ae660879e241c8be3 = L.divIcon({"className": "empty", "html": `      \u003ciframe src=\"globe.html\" height=280 width=450\u003e\u003c/iframe\u003e`, "iconAnchor": [-160, -60]});
             marker_ac37d7641156687c25d90c5324d84946.setIcon(div_icon_a2b03ab2ceb0625ae660879e241c8be3);
         
 </script>

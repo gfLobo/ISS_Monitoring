@@ -15,7 +15,7 @@ import time
 
 
 zoom_rate = 5
-main_theme = 'stamenterrain'
+main_theme = 'openstreetmap'
 while True:
 
 

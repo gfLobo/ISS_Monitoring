@@ -54,10 +54,7 @@ while True:
         zoom_start=zoom_rate, tiles=f'{main_theme}')
 
     # Viewing modes
-
-    folium.TileLayer('stamenterrain', name='Earth Relief').add_to(m)
     folium.TileLayer('openstreetmap', name='Street Map').add_to(m)
-    folium.TileLayer('stamenwatercolor', name='Vintage').add_to(m)
     folium.TileLayer('cartodbpositron', name='White Earth').add_to(m)
     folium.TileLayer('cartodbdark_matter', name='Dark Earth').add_to(m)
     folium.LayerControl().add_to(m)

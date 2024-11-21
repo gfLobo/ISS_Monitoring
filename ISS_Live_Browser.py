@@ -198,7 +198,7 @@ class MainWindow(QMainWindow):
         # LOAD DEFAULT HOME PAGE (GOOLE.COM)
         #url = http://www.google.com,
         #label = Homepage
-        self.add_new_tab(QUrl('http://localhost:63342/ISS_Live/mp.html'), 'Homepage')
+        self.add_new_tab(QUrl('http://127.0.0.1:5500/mp.html'), 'Homepage')
 
         # SHOW MAIN WINDOW
         self.show()

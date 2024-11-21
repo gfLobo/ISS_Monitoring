@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<head>    
+<html>
+<head>
+    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <script type="text/javascript" src="https://livejs.com/live.js"></script>
     
@@ -10,41 +12,44 @@
     
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
     
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_51cf4fc4f35f0fec8d038e5a136c3a43 {
+                #map_e4c5bd0f744db6b2e626074ccb1f79ca {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
                     left: 0.0%;
                     top: 0.0%;
                 }
+                .leaflet-container { font-size: 1rem; }
             </style>
         
 </head>
-<body>    
+<body>
     
-            <div class="folium-map" id="map_51cf4fc4f35f0fec8d038e5a136c3a43" ></div>
+    
+            <div class="folium-map" id="map_e4c5bd0f744db6b2e626074ccb1f79ca" ></div>
         
 </body>
-<script>    
+<script>
     
-            var map_51cf4fc4f35f0fec8d038e5a136c3a43 = L.map(
-                "map_51cf4fc4f35f0fec8d038e5a136c3a43",
+    
+            var map_e4c5bd0f744db6b2e626074ccb1f79ca = L.map(
+                "map_e4c5bd0f744db6b2e626074ccb1f79ca",
                 {
-                    center: [-0.7894, 104.3341],
+                    center: [-37.6535, 13.6286],
                     crs: L.CRS.EPSG3857,
                     zoom: 5,
                     zoomControl: true,
@@ -56,119 +61,114 @@
 
         
     
-            var tile_layer_c67444cb509b06e1cfc105ac6bc7d9c5 = L.tileLayer(
-                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            var tile_layer_401988d340799c3dae9aae33cc013f1f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
         
     
-            var tile_layer_ec9085d2a8ddeb634e5e69d06485da6a = L.tileLayer(
-                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
-                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            tile_layer_401988d340799c3dae9aae33cc013f1f.addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var tile_layer_9a2910dd7ae0cabc85eacc334dabe67a = L.tileLayer(
-                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            var tile_layer_d10c0da94f80a216c555f0cf80f34672 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
         
     
-            var tile_layer_8730f985dee1888e0433265b1118e683 = L.tileLayer(
-                "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
-                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            tile_layer_d10c0da94f80a216c555f0cf80f34672.addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var tile_layer_48761cefa64f44135bbb91d538108d12 = L.tileLayer(
-                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            var tile_layer_15579ba141a7fba386da765a17d4c701 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
         
     
-            var tile_layer_ff9fab33caf5d160fccf4d6b466af33e = L.tileLayer(
-                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            tile_layer_15579ba141a7fba386da765a17d4c701.addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var layer_control_6ec6c7b249f50638089ffd62063e77a8 = {
+            var layer_control_5345b0c7f6198665d347ff22f5cdd2bf_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_c67444cb509b06e1cfc105ac6bc7d9c5,
-                    "Earth Relief" : tile_layer_ec9085d2a8ddeb634e5e69d06485da6a,
-                    "Street Map" : tile_layer_9a2910dd7ae0cabc85eacc334dabe67a,
-                    "Vintage" : tile_layer_8730f985dee1888e0433265b1118e683,
-                    "White Earth" : tile_layer_48761cefa64f44135bbb91d538108d12,
-                    "Dark Earth" : tile_layer_ff9fab33caf5d160fccf4d6b466af33e,
+                    "White Earth" : tile_layer_401988d340799c3dae9aae33cc013f1f,
+                    "Dark Earth" : tile_layer_d10c0da94f80a216c555f0cf80f34672,
+                    "OpenStreetMap" : tile_layer_15579ba141a7fba386da765a17d4c701,
                 },
                 overlays :  {
                 },
             };
-            L.control.layers(
-                layer_control_6ec6c7b249f50638089ffd62063e77a8.base_layers,
-                layer_control_6ec6c7b249f50638089ffd62063e77a8.overlays,
+            let layer_control_5345b0c7f6198665d347ff22f5cdd2bf = L.control.layers(
+                layer_control_5345b0c7f6198665d347ff22f5cdd2bf_layers.base_layers,
+                layer_control_5345b0c7f6198665d347ff22f5cdd2bf_layers.overlays,
                 {"autoZIndex": true, "collapsed": true, "position": "topright"}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
-            tile_layer_ec9085d2a8ddeb634e5e69d06485da6a.remove();
-            tile_layer_9a2910dd7ae0cabc85eacc334dabe67a.remove();
-            tile_layer_8730f985dee1888e0433265b1118e683.remove();
-            tile_layer_48761cefa64f44135bbb91d538108d12.remove();
-            tile_layer_ff9fab33caf5d160fccf4d6b466af33e.remove();
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
+
         
     
-            var circle_marker_dd6970bde5c3b985049c0543c768d26f = L.circleMarker(
-                [-1.2894, 105.1341],
+            var circle_marker_22abbc7d7d0244c1691bb3018a17bbc3 = L.circleMarker(
+                [-38.1535, 14.428600000000001],
                 {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3186cc", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var marker_d8cd26c7f3908106dca9cb639b6e3f1f = L.marker(
-                [-0.7894, 104.3341],
+            var marker_56306bb120b046dc7681a6330e16aabc = L.marker(
+                [-37.6535, 13.6286],
                 {}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var div_icon_28285d53ede5bdca2c993e167e4b1b50 = L.divIcon({"className": "empty", "html": "\u003cimg src=\"images/iss.png\" width=\"50\"\u003e\u003c/img\u003e"});
-            marker_d8cd26c7f3908106dca9cb639b6e3f1f.setIcon(div_icon_28285d53ede5bdca2c993e167e4b1b50);
+            var div_icon_0d4676b485d8ac508d3be61d79cd49a7 = L.divIcon({"className": "empty", "html": "\u003cimg src=\"images/iss.png\" width=\"50\" height=\"50\"\u003e\u003c/img\u003e"});
+            marker_56306bb120b046dc7681a6330e16aabc.setIcon(div_icon_0d4676b485d8ac508d3be61d79cd49a7);
         
     
-            var marker_fd161f994a3fadc115332616a3bf4510 = L.marker(
-                [-0.7894, 104.3341],
+            var marker_6afd51c85376004278fa464b7807b9f5 = L.marker(
+                [-37.6535, 13.6286],
                 {}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var div_icon_2068af871a603f0e6e621c1aeaedebcf = L.divIcon({"className": "empty", "html": "\u003ch1 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003eInternational Space Station\u003c/mark\u003e\u003c/h1\u003e\n            \u003cbr/\u003e\n            \u003ch4  \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\ud83d\udccd Kepulauan Riau, Indonesia\u003c/mark\u003e\u003c/h4\u003e", "iconAnchor": [225, 300], "iconSize": [500, 90]});
-            marker_fd161f994a3fadc115332616a3bf4510.setIcon(div_icon_2068af871a603f0e6e621c1aeaedebcf);
+            var div_icon_54dc2f8b0ae79990130ac99cf5ce6d6d = L.divIcon({"className": "empty", "html": "\u003ch1 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003eInternational Space Station\u003c/mark\u003e\u003c/h1\u003e\n            \u003cbr/\u003e\n            \u003ch4  \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\ud83d\udccd Lat: -37.6535, Lon: 13.6286\u003c/mark\u003e\u003c/h4\u003e", "iconAnchor": [125, 300], "iconSize": [500, 90]});
+            marker_6afd51c85376004278fa464b7807b9f5.setIcon(div_icon_54dc2f8b0ae79990130ac99cf5ce6d6d);
         
     
-            var marker_d4e799b09508a328da1b7dfa54e71b72 = L.marker(
-                [-0.7894, 104.3341],
+            var marker_f3f44d20ccab652947de3eeecda6179e = L.marker(
+                [-37.6535, 13.6286],
                 {}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var div_icon_9d4825e456b60b3f5e0fa25d1795779e = L.divIcon({"className": "empty", "html": "\u003cimg src=\"images/iss_badge.png\" width=\"80\"\u003e\u003c/img\u003e", "iconAnchor": [300, 295]});
-            marker_d4e799b09508a328da1b7dfa54e71b72.setIcon(div_icon_9d4825e456b60b3f5e0fa25d1795779e);
+            var div_icon_9d725d66677c3a8dc1fe554cbb7e81c5 = L.divIcon({"className": "empty", "html": "\n                \u003ciframe \n                  width=\"315\" \n                  height=\"150\" \n                  allowfullscreen  \n                  src=\"https://www.youtube.com/embed/wG4YaEcNlb0?autoplay=1\" \n                  scrolling=\"no\"  \n                  webkitallowfullscreen \n                  frameborder=\"0\" \n                  style=\"border: 0 none transparent;\"\u003e\u003c/iframe\u003e\n            ", "iconAnchor": [600, -40], "iconSize": [500, 500]});
+            marker_f3f44d20ccab652947de3eeecda6179e.setIcon(div_icon_9d725d66677c3a8dc1fe554cbb7e81c5);
         
     
-            var marker_16b21fd9e7eec0028f77dec46b8aca42 = L.marker(
-                [-0.7894, 104.3341],
+            var marker_3817503a9008ba49ffc940f8b55e7b41 = L.marker(
+                [-37.6535, 13.6286],
                 {}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var div_icon_a618aec1d863892879c0ebbdcaa29417 = L.divIcon({"className": "empty", "html": "\u003ch2 \u003e\ud83d\udc69\u200d\ud83d\ude80 \u003cmark style=\"background-color:black; color:white;\"\u003e7 Astronauts on board:\u003c/mark\u003e\u003c/h2\u003e\u003cbr/\u003e\u003cbr/\u003e \u003ch6 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e[\u0027Oleg Artemyev\u0027, \u0027Denis Matveev\u0027, \u0027Sergey Korsakov\u0027, \u0027Kjell Lindgren\u0027, \u0027Bob Hines\u0027, \u0027Samantha Cristoforetti\u0027, \u0027Jessica Watkins\u0027]\u003c/mark\u003e\u003c/h6\u003e", "iconAnchor": [400, -200], "iconSize": [500, 500]});
-            marker_16b21fd9e7eec0028f77dec46b8aca42.setIcon(div_icon_a618aec1d863892879c0ebbdcaa29417);
+            var div_icon_654264c78d3c87f228c094d2c22eb8e1 = L.divIcon({"className": "empty", "html": "\u003cimg src=\"images/iss_badge.png\" width=\"90\" height=\"90\"\u003e\u003c/img\u003e", "iconAnchor": [220, 300]});
+            marker_3817503a9008ba49ffc940f8b55e7b41.setIcon(div_icon_654264c78d3c87f228c094d2c22eb8e1);
         
     
-            var marker_f97681f5f96fce207ca30056e764ffe8 = L.marker(
-                [-0.7894, 104.3341],
+            var marker_fbf13958d95fa8311614ba69664c188b = L.marker(
+                [-37.6535, 13.6286],
                 {}
-            ).addTo(map_51cf4fc4f35f0fec8d038e5a136c3a43);
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
         
     
-            var div_icon_bb740b16e9cd8273cc6792c524300547 = L.divIcon({"className": "empty", "html": "\u003ciframe src=\"globe.html\" height=300 width=500\u003e\u003c/iframe\u003e", "iconAnchor": [-150, -50]});
-            marker_f97681f5f96fce207ca30056e764ffe8.setIcon(div_icon_bb740b16e9cd8273cc6792c524300547);
+            var div_icon_71cc3c488ccd0b1d6f8fbf58be5e6136 = L.divIcon({"className": "empty", "html": "\u003ch2 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\ud83d\udc69\u200d\ud83d\ude8012 Astronauts on board:\u003c/mark\u003e\u003c/h2\u003e\n            \u003cbr/\u003e\u003cbr/\u003e\n            \u003ch6 \u003e\u003cmark style=\"background-color:black; color:white;\"\u003e\u25cf Oleg Kononenko   \u25cf Nikolai Chub   \u25cf Tracy Caldwell Dyson   \u25cf Matthew Dominick   \u25cf Michael Barratt   \u25cf Jeanette Epps   \u25cf Alexander Grebenkin   \u25cf Butch Wilmore   \u25cf Sunita Williams   \u25cf Li Guangsu   \u25cf Li Cong   \u25cf Ye Guangfu   \u003c/mark\u003e\u003c/h6\u003e\n            ", "iconAnchor": [600, -200], "iconSize": [500, 500]});
+            marker_fbf13958d95fa8311614ba69664c188b.setIcon(div_icon_71cc3c488ccd0b1d6f8fbf58be5e6136);
+        
+    
+            var marker_fcac70c7f435a89981bdba3165c6eb0f = L.marker(
+                [-37.6535, 13.6286],
+                {}
+            ).addTo(map_e4c5bd0f744db6b2e626074ccb1f79ca);
+        
+    
+            var div_icon_f4dc4b52a71fb59455f3c118d17b47c5 = L.divIcon({"className": "empty", "html": "\u003ciframe src=\"ISS_frame/globe.html\" height=200 width=350\u003e\u003c/iframe\u003e", "iconAnchor": [-300, -80]});
+            marker_fcac70c7f435a89981bdba3165c6eb0f.setIcon(div_icon_f4dc4b52a71fb59455f3c118d17b47c5);
         
 </script>
+</html>

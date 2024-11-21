@@ -15,7 +15,7 @@ import time
 
 
 zoom_rate = 5
-main_theme = 'openstreetmap'
+main_theme = 'OpenStreetMap'
 while True:
 
 
@@ -51,13 +51,14 @@ while True:
     # The Map
     m = folium.Map(
         location=loc,
-        zoom_start=zoom_rate, tiles=f'{main_theme}')
+        zoom_start=zoom_rate, tiles=None)
 
     # Viewing modes
-    folium.TileLayer('openstreetmap', name='Street Map').add_to(m)
     folium.TileLayer('cartodbpositron', name='White Earth').add_to(m)
     folium.TileLayer('cartodbdark_matter', name='Dark Earth').add_to(m)
+    folium.TileLayer(main_theme, name=main_theme).add_to(m)
     folium.LayerControl().add_to(m)
+    
 
     # ISS on the map
     folium.CircleMarker(location=(loc[0] - 0.5, loc[1] + 0.8),
@@ -72,7 +73,7 @@ while True:
         location=loc,
         icon=DivIcon(
 
-            html=f'<img src="images/iss.png" width="50"></img>',
+            html=f'<img src="images/iss.png" width="50" height="50"></img>',
         )
     ).add_to(m)
 
@@ -81,18 +82,38 @@ while True:
         location=loc,
         icon=DivIcon(
             icon_size=(500, 90),
-            icon_anchor=(225, 300),
+            icon_anchor=(125, 300),
             html=f'''<h1 ><mark style="background-color:black; color:white;">International Space Station</mark></h1>
             <br/>
             <h4  ><mark style="background-color:black; color:white;">📍 {address}</mark></h4>''',
         )
     ).add_to(m)
 
+    # Youtube live stream
     folium.map.Marker(
         location=loc,
         icon=DivIcon(
-            icon_anchor=(300, 295),
-            html=f'<img src="images/iss_badge.png" width="80"></img>',
+            icon_size=(500, 500),
+            icon_anchor=(600, -40),
+            html=("""
+                <iframe 
+                  width="315" 
+                  height="150" 
+                  allowfullscreen  
+                  src="https://www.youtube.com/embed/wG4YaEcNlb0?autoplay=1" 
+                  scrolling="no"  
+                  webkitallowfullscreen 
+                  frameborder="0" 
+                  style="border: 0 none transparent;"></iframe>
+            """),
+        ),
+    ).add_to(m)
+
+    folium.map.Marker(
+        location=loc,
+        icon=DivIcon(
+            icon_anchor=(220, 300),
+            html=f'<img src="images/iss_badge.png" width="90" height="90"></img>',
         )
     ).add_to(m)
 
@@ -101,10 +122,16 @@ while True:
         location=loc,
         icon=DivIcon(
             icon_size=(500, 500),
-            icon_anchor=(400, -200),
-            html=f'<h2 >👩‍🚀 <mark style="background-color:black; color:white;">{len(info["people"])} Astronauts on board:</mark></h2><br/><br/> <h6 ><mark style="background-color:black; color:white;">{[i["name"] for i in info["people"]]}</mark></h6>',
+            icon_anchor=(600, -200),
+            html=f"""<h2 ><mark style="background-color:black; color:white;">👩‍🚀{len(info["people"])} Astronauts on board:</mark></h2>
+            <br/><br/>
+            <h6 ><mark style="background-color:black; color:white;">{"".join(f"● {i['name']}   " for i in info['people'])}</mark></h6>
+            """,
         )
     ).add_to(m)
+
+    
+
 
     # Globe Figure
     flatMap = plt.figure()
@@ -119,7 +146,7 @@ while True:
     ''' shade the night areas, with alpha transparency so the
         map shows through. Use current time in UTC.'''
 
-    date = datetime.utcnow()
+    date = datetime.now()
     globe.nightshade(date)
 
     plt.title('Globe terminator line %s (UTC)' % date.strftime("%d %b %Y"), fontdict={'fontsize': 13})
@@ -136,7 +163,7 @@ while True:
 
     html = '<img src=\'data:image/png;base64,{}\' width="100%" height="100%">\n'.format(encoded)
 
-    with open('globe.html', 'w') as f:
+    with open('ISS_frame/position_ref.html', 'w') as f:
         f.write(html)
 
     '''GloboSphere plot'''
@@ -190,10 +217,10 @@ while True:
 
     html2 = '<img src=\'data:image/png;base64,{}\' width="100%" height="100%">\n'.format(encoded2)
 
-    with open('globe.html') as fobj:
+    with open('ISS_frame/position_ref.html') as fobj:
         text = fobj.read()
 
-    with open('globe.html', 'a') as fobj:
+    with open('ISS_frame/position_ref.html', 'a') as fobj:
         if text.endswith('\n'):
             fobj.write('\n')
         fobj.write(html2)
@@ -201,8 +228,8 @@ while True:
     folium.map.Marker(
         location=loc,
         icon=DivIcon(
-            icon_anchor=(-150, -50),
-            html=f'<iframe src="globe.html" height=300 width=500></iframe>',
+            icon_anchor=(-300, -80),
+            html=f'<iframe src="ISS_frame/globe.html" height=200 width=350></iframe>',
         )
     ).add_to(m)
 
